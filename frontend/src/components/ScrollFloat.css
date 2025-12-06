@@ -1,0 +1,17 @@
+.scroll-float {
+  overflow: hidden;
+  text-align: center;
+  margin-top: 200px; /* gives space so we can scroll into it */
+}
+
+.scroll-float-text {
+  display: inline-block;
+  font-size: 64px;   /* MATCH hero-title */
+  font-weight: 800;  /* MATCH hero-title */
+  line-height: 1.1;
+  color: #e6e6e6;    /* MATCH hero-title span */
+}
+
+.char {
+  display: inline-block;
+}
