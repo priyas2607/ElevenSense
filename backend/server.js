@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import authRoutes from "./routes/auth.js";
 import redis from "./utils/redis.js";
+import feedRoutes from "./feed.js";
 
 dotenv.config();
 
@@ -16,12 +17,18 @@ const PORT = process.env.PORT || 5000;
    MIDDLEWARE
 =========================== */
 app.use(cors({
-  origin: process.env.CLIENT_ORIGIN || "http://localhost:5173",
+  origin: process.env.CLIENT_ORIGIN || "http://localhost:5174",
+  credentials: true
+}));
+app.options("*", cors({
+  origin: process.env.CLIENT_ORIGIN || "http://localhost:5174",
   credentials: true
 }));
 
+
 app.use(express.json());
 app.use(cookieParser());
+app.use("/api/feed", feedRoutes);
 
 /* ===========================
    CONNECT MONGODB
