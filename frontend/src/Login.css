@@ -1,0 +1,251 @@
+/* frontend/src/Login.css */
+
+/* Page layout */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: radial-gradient(ellipse at 10% 10%, rgba(82, 39, 255, 0.08), transparent 10%),
+              radial-gradient(ellipse at 90% 80%, rgba(255, 159, 252, 0.06), transparent 15%),
+              #05040a;
+  overflow: hidden;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #fff;
+}
+
+/* Background container for your LiquidEther component (keeps z-order) */
+.auth-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.9;
+  filter: saturate(1.05) blur(6px);
+}
+
+/* Card / form container */
+.auth-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 420px;
+  margin: 2rem;
+  padding: 2.25rem;
+  border-radius: 16px;
+  box-shadow:
+    0 8px 30px rgba(5, 4, 10, 0.6),
+    inset 0 1px 0 rgba(255,255,255,0.02);
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.02) 100%);
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(10px) saturate(120%);
+  transform: translateY(6px);
+  animation: floatIn 420ms cubic-bezier(.22,.9,.36,1) both;
+}
+
+/* Headings */
+.auth-title {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 6px 0;
+  color: #fff;
+}
+
+.auth-sub {
+  color: rgba(255,255,255,0.72);
+  margin: 0 0 18px 0;
+  font-size: 14px;
+}
+
+/* Error */
+.auth-error {
+  background: linear-gradient(90deg, rgba(255,40,84,0.08), rgba(255,40,84,0.04));
+  color: #ff6b87;
+  border: 1px solid rgba(255,40,84,0.14);
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  font-size: 13px;
+}
+
+/* Form */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(17,17,20,0.6);
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  transition: box-shadow 160ms ease, transform 160ms ease, border-color 160ms ease;
+  box-shadow: 0 2px 8px rgba(2,3,6,0.35);
+}
+
+.auth-form input::placeholder {
+  color: rgba(255,255,255,0.45);
+}
+
+.auth-form input:focus {
+  border-color: rgba(82, 39, 255, 0.9);
+  box-shadow: 0 8px 30px rgba(82,39,255,0.08);
+  transform: translateY(-1px);
+}
+
+/* Primary button */
+.auth-btn {
+  margin-top: 6px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  color: white;
+  font-size: 15px;
+  background: linear-gradient(90deg, #6e4bff 0%, #ff6fd8 100%);
+  box-shadow: 0 8px 24px rgba(110,75,255,0.18);
+  transition: transform 160ms ease, box-shadow 160ms ease, opacity 120ms;
+}
+
+.auth-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(110,75,255,0.20);
+}
+
+.auth-btn:active {
+  transform: translateY(-1px) scale(.997);
+}
+
+/* Secondary text/links */
+.auth-switch {
+  margin-top: 14px;
+  color: rgba(255,255,255,0.72);
+  font-size: 13px;
+}
+
+.auth-link {
+  color: #dfe;
+  font-weight: 700;
+  text-decoration: none;
+  color: #caa0ff;
+  margin-left: 6px;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+  opacity: 0.95;
+}
+
+/* Back link */
+.back-btn {
+  display: inline-block;
+  margin-top: 18px;
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: background 140ms ease, transform 140ms;
+}
+
+.back-btn:hover {
+  background: rgba(255,255,255,0.02);
+  transform: translateY(-2px);
+}
+
+/* Small screens */
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 1.5rem;
+    margin: 1rem;
+    border-radius: 12px;
+  }
+
+  .auth-title {
+    font-size: 22px;
+  }
+}
+
+/* Decorative accent (subtle gradient bar) */
+.auth-container::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(82,39,255,0.12), rgba(255,111,216,0.08));
+  pointer-events: none;
+  filter: blur(6px);
+  opacity: 0.9;
+}
+
+/* Entrance animation */
+@keyframes floatIn {
+  from { opacity: 0; transform: translateY(18px) scale(.995); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Fallback styles (kept from original if other pages reference them) */
+.login-container, .login-card, .login-btn, .signup-text {
+  display: none;
+}
+
+/* OTP and small extras */
+.auth-info {
+  background: linear-gradient(90deg, rgba(94, 180, 255, 0.06), rgba(110,75,255,0.03));
+  color: #bfe8ff;
+  border: 1px solid rgba(110,75,255,0.08);
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+
+.otp-note {
+  color: rgba(255,255,255,0.72);
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.otp-input {
+  letter-spacing: 0.12em;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.otp-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.auth-secondary {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.88);
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: transform 140ms, background 140ms;
+}
+
+.auth-secondary:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.02);
+}
